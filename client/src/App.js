@@ -1,15 +1,46 @@
 import {
   createBrowserRouter,
   RouterProvider,
+  Outlet,
 } from "react-router-dom"
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Register from "./pages/Register"; 
+
+import React from 'react'
+import NavBar from "./components/common/Navbar"
+import Footer from "./components/common/Footer";
+import Series from "./pages/Series"
+
+
+ const Layout = () => {
+  return (
+    <>
+      <NavBar/>
+      <div className="main-container">
+        <Outlet/>
+      </div>
+      <Footer/>
+    </>
+  )
+}
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />
+    element: <Layout/>,
+    children: [
+      {
+        path:"/",
+        element:<HomePage/>
+      },
+      {
+        path:"/series",
+        element:<Series/>
+      },
+      
+    ]
   },
   {
     path: "/register",
@@ -23,7 +54,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <div className="app">
+        <RouterProvider router={router} />      
+    </div>
+    
   );
 }
 
