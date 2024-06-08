@@ -8,14 +8,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px max(40px, 10%);
+    padding: 15px $page-side-padding;
+
+    .link {
+      text-decoration: none;
+      color: inherit;
+      padding: 0;
+    }
 
     .logo {
-
+      font-size: 24px;
     }
 
     .links {
+        display: flex;
+        gap: 12px;
+        
 
+        .link {
+          
+          h6 {
+            margin: 0;
+            font-size: 16px;
+          }
+        }
     }
   }
 }

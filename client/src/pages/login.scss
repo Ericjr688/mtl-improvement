@@ -1,3 +1,5 @@
+@import "../_variables";
+
 .auth {
   display: flex;
   justify-content: center;
@@ -5,7 +7,7 @@
   height: 100vh;
   flex-direction: column;
 
-  background-color: mintcream;
+  background-color: $accent-five;
 
   .label {
     font-size: 20px;

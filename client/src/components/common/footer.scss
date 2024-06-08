@@ -1,0 +1,11 @@
+@import "../../_variables";
+
+.footer{
+  background-color: $accent-one;
+  color: $accent-five;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px $page-side-padding;
+  margin-top: 100px;
+}

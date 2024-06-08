@@ -11,6 +11,7 @@ import React from 'react'
 import NavBar from "./components/common/Navbar"
 import Footer from "./components/common/Footer";
 import Series from "./pages/Series"
+import ImproveTranslation from "./pages/ImproveTranslation"
 
 
  const Layout = () => {
@@ -39,7 +40,10 @@ const router = createBrowserRouter([
         path:"/series",
         element:<Series/>
       },
-      
+      {
+        path:"/improve-translation",
+        element:<ImproveTranslation/>
+      },
     ]
   },
   {
