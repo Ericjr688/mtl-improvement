@@ -50,7 +50,7 @@ function HomePage () {
   // include function to hyphenate and lowercase novel name so that we use that to go to novel page rather than id (placeholder). remember to change in router as well
   // removed author and desc and latest chapter and tags and status
   return ( 
-    <div className="home">
+    <div className="home page-wrapper">
       <div className="banner"> Banner</div>
       <div className="popular section">
         <h2 className="section-header">

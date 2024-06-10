@@ -4,7 +4,7 @@ $accent-three: #124E66;
 $accent-four: #748D92;
 $accent-five: #D3D9D4;
 
-$page-side-padding: max(40px, 10%);
+$page-width: 1215px;
 
 $font-size-one: 32px;
 $font-size-two: 24px;
@@ -12,3 +12,10 @@ $font-size-three: 20px;
 $font-size-four: 16px;
 
 $margin-one: 12px;
+
+
+// 970 at 1024
+// 728 at 768
+// at mobile screen sizes, have width be auto and maintain margins instead.
+
+

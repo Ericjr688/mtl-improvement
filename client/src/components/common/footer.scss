@@ -6,7 +6,11 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 15px $page-side-padding;
+  width: 100%;
   font-size: $font-size-three;
-  // margin-top: 100px;
+
+  .container {
+    width: 1215px;
+    margin: 15px auto;
+  }
 }

@@ -1,7 +1,12 @@
 @import "../_variables";
 
+.page-wrapper {
+  width: $page-width;
+}
+
+
 .home {
-  width: 100%;
+  
   color: $accent-two;
 
   .link {
@@ -21,6 +26,8 @@
     font-size: $font-size-one;
     margin-bottom: 35px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+    margin: 30px auto;
   }
 
   .section {
@@ -51,22 +58,26 @@
 
           .novel-card-img {
             width: 100%;
-            border-radius: 4px;
+            border-radius: 5px;
             box-shadow: 0 0 1px rgba(0, 0, 0, .4);
             
           }
 
-          span {
+          .badge {
             position: absolute;
-            background-color: $accent-five;
-            color: $accent-two;
-            padding: 5px;
-            border-radius: 5px;
+            background-color: $accent-two;
+            color: $accent-five;
+            padding: 3px;
+            border-radius: 0 6px 0 0;
+            bottom: 4px; // for some reason, there is a space in the image wrapper that isn't covered by the image. that is why I have to push the badge up a bit
+            left: 0;   
+            z-index: 1;
           }
         }
 
         .novel-title {
           margin-bottom: .425rem;
+
           h3 {
             margin: 0;
             font-size: $font-size-three;
@@ -76,3 +87,5 @@
     }
   }
 }
+
+

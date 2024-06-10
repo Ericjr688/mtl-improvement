@@ -1,11 +1,15 @@
 @import "./_variables";
 
+
 * {
   box-sizing: border-box;
 }
 
+
+
 body {
   margin: 0px;
+  width: 100%;
 }
 
 /* .app {
@@ -13,11 +17,30 @@ body {
 } */
 
 .app {
-  
+
   .main-container {
     display: flex;
     justify-content: center;
-    background-color: $accent-five;
-    padding: 30px $page-side-padding;
+    background-color: whitesmoke; 
+
+  }
+
+  @media (max-width: 1260px) {
+    $page-width: 970px;
+    
+    .page-wrapper, .navbar .container, .footer .container {
+      width: $page-width;
+    }
+  }
+  
+  
+  @media (max-width: 1024px) {
+    $page-width: 728px;
+    
+    .page-wrapper, .navbar .container, .footer .container {
+      width: $page-width;
+    }
   }
 }
+
+//switch to mobile after 768
