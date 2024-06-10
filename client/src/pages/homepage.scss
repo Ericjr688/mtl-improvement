@@ -1,0 +1,78 @@
+@import "../_variables";
+
+.home {
+  width: 100%;
+  color: $accent-two;
+
+  .link {
+    text-decoration: none;
+    color: inherit;
+    padding: 0;
+  }
+
+  .banner {
+    background-color: $accent-four;
+    color: $accent-five;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $font-size-one;
+    margin-bottom: 35px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .section {
+    margin-bottom: 20px;
+
+    .section-header {
+      font-size: $font-size-two;
+      margin: 0;
+      margin-bottom: $margin-one;
+    }
+    
+    .novel-card-large-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    
+      .novel-card-large {
+        width: 16%;
+        max-width: 185px; 
+        margin-bottom: $margin-one;
+
+        .novel-cover {
+          overflow: hidden;
+          position: relative;
+          margin-bottom: .425rem;
+          // remove from here so the css can be reused
+          // use google for better css
+
+          .novel-card-img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 0 1px rgba(0, 0, 0, .4);
+            
+          }
+
+          span {
+            position: absolute;
+            background-color: $accent-five;
+            color: $accent-two;
+            padding: 5px;
+            border-radius: 5px;
+          }
+        }
+
+        .novel-title {
+          margin-bottom: .425rem;
+          h3 {
+            margin: 0;
+            font-size: $font-size-three;
+          }
+        }
+      }
+    }
+  }
+}
