@@ -31,7 +31,7 @@
   }
 
   .section {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 
     .section-header {
       font-size: $font-size-two;
@@ -39,13 +39,14 @@
       margin-bottom: $margin-one;
     }
     
+    // novel cards for popular section
     .novel-card-large-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
     
       .novel-card-large {
-        width: 16%;
+        width: 15%;
         max-width: 185px; 
         margin-bottom: $margin-one;
 
@@ -53,6 +54,7 @@
           overflow: hidden;
           position: relative;
           margin-bottom: .425rem;
+          max-height: 230px;
           // remove from here so the css can be reused
           // use google for better css
 
@@ -77,10 +79,51 @@
 
         .novel-title {
           margin-bottom: .425rem;
-
+  
           h3 {
             margin: 0;
             font-size: $font-size-three;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    // novel entries for latest releases
+    .update-table {
+      margin: $margin-one 0;
+
+      table {
+        width: 100%;
+        border-spacing: 0;
+        border-collapse: collapse;
+        
+        tr {
+          border-top: 0.1px solid #ddd;
+        }
+
+        th, td {
+          padding: 10px 0;
+          
+        }
+
+        .name {
+          text-align: left;
+          width: 38%;
+        }
+
+        tbody {
+
+          td {
+            text-align: center;
+          }
+
+          .link {
+            color: $accent-four;
+          }
+
+          .link td:hover {
+            text-decoration: underline;
           }
         }
       }
