@@ -4,16 +4,34 @@
   width: $page-width;
 }
 
+// here so it can apply to other pages
+
+.novel-cover {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: .425rem;
+  max-height: 230px;
+  // use google for better css
+
+  .novel-card-img {
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .4);
+    object-fit: cover;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  padding: 0;
+}
 
 .home {
   
   color: $accent-two;
 
-  .link {
-    text-decoration: none;
-    color: inherit;
-    padding: 0;
-  }
+  
 
   .banner {
     background-color: $accent-four;
@@ -24,14 +42,13 @@
     justify-content: center;
     align-items: center;
     font-size: $font-size-one;
-    margin-bottom: 35px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     
-    margin: 30px auto;
+    margin: $margin-three auto;
   }
 
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 
     .section-header {
       font-size: $font-size-two;
@@ -44,26 +61,14 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      font-size: $font-size-three;
     
       .novel-card-large {
         width: 15%;
         max-width: 185px; 
         margin-bottom: $margin-one;
 
-        .novel-cover {
-          overflow: hidden;
-          position: relative;
-          margin-bottom: .425rem;
-          max-height: 230px;
-          // remove from here so the css can be reused
-          // use google for better css
-
-          .novel-card-img {
-            width: 100%;
-            border-radius: 5px;
-            box-shadow: 0 0 1px rgba(0, 0, 0, .4);
-            
-          }
+        // novel cover has been taken out of this nest so it can apply to other pages
 
           .badge {
             position: absolute;
@@ -71,18 +76,17 @@
             color: $accent-five;
             padding: 3px;
             border-radius: 0 6px 0 0;
-            bottom: 4px; // for some reason, there is a space in the image wrapper that isn't covered by the image. that is why I have to push the badge up a bit
+            bottom: 1px; // for some reason, there is a space in the image wrapper that isn't covered by the image. that is why I have to push the badge up a bit
             left: 0;   
             z-index: 1;
           }
-        }
 
         .novel-title {
           margin-bottom: .425rem;
   
           h3 {
             margin: 0;
-            font-size: $font-size-three;
+            font-size: inherit;
             font-weight: 500;
           }
         }
@@ -91,7 +95,7 @@
 
     // novel entries for latest releases
     .update-table {
-      margin: $margin-one 0;
+      margin: 0 0 $margin-one 0;
 
       table {
         width: 100%;

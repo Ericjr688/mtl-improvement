@@ -2,7 +2,9 @@ import React from 'react'
 
 function Novel() {
   return (
-    <div>Novel</div>
+    <div className="novel-page page-wrapper">
+      Novel
+    </div>
   )
 }
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import "./homepage.scss"
+import { hyphenateAndLowercase } from '../helpers';
 
 function HomePage () {
   const popularNovels = [
@@ -7,7 +8,7 @@ function HomePage () {
       id: 1,
       title: "The Legendary Mechanic", 
       img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1557871302l/45807334.jpg",
-      chapters: 1200, // should chapters be displayed? we may not have all the chapters, so it what kind of chapter info do we dislay. might as well not display then
+      chapters: 1200, // should chapters be displayed? we may not have all the chapters, so it what kind of chapter info do we dislay. might as well not display then. i think i will display improved chapters because that will always be in my database
       score: 4.9,
     },
     {
@@ -50,7 +51,6 @@ function HomePage () {
   const latestImprovements = [
     {
       id: 1,
-      novelId: 1, 
       title: "The Legendary Mechanic",
       chapter: 819,
       contributor: "dao ancestor",
@@ -58,7 +58,6 @@ function HomePage () {
     },
     {
       id: 2,
-      novelId: 3, 
       title: "Noble Emblem",
       chapter: 598,
       contributor: "dao ancestor",
@@ -66,7 +65,6 @@ function HomePage () {
     },
     {
       id: 3,
-      novelId: 5, 
       title: "Sylver Seeker",
       chapter: 267,
       contributor: "minced watermelon",
@@ -86,9 +84,9 @@ function HomePage () {
         <div className="novel-card-large-container">
           {popularNovels.map(popularNovel => (
             <div className="novel-card-large" key={popularNovel.id}>
-              <Link className= "link" to={`/series/${popularNovel.id}`}>
+              <Link className= "link" to={`/series/${hyphenateAndLowercase(popularNovel.title)}`}>
                 <div className="novel-cover">
-                  <img className= "novel-card-img" src={popularNovel.img} alt="post.title" />
+                  <img className= "novel-card-img" src={popularNovel.img} alt={popularNovel.title} />
                   <span className="badge">{popularNovel.score}</span>
                 </div>
                 <div className="novel-title">
@@ -119,7 +117,7 @@ function HomePage () {
             <tbody>
               {latestImprovements.map(latestImprovement => (
                 <tr key={latestImprovement.id}>
-                  <Link className= "link" to={`/series/${latestImprovement.novelId}`}><td className="name">{latestImprovement.title}</td></Link>
+                  <Link className= "link" to={`/series/${hyphenateAndLowercase(latestImprovement.title)}`}><td className="name">{latestImprovement.title}</td></Link>
                   <td className="chapter">Chapter {latestImprovement.chapter}</td> {/* create page for chapter and insert into router. how will the url of chapters be displayed*/}
                   <td className="user">{latestImprovement.contributor}</td>
                   <td className="date">{latestImprovement.date}</td>
@@ -132,14 +130,14 @@ function HomePage () {
           
         </div>
       </div>
-      <div className="recommendations section">
+      {/* <div className="recommendations section">
         <h2 className="section-header">
-          Recommendations
+          Recommendations (same style as the popular novels section)
         </h2>
-      </div>
+      </div> */}
       <div className="top-contributors section">
         <h2 className="section-header">
-          Top Contributors
+          Top Contributors (ranking type section?)
         </h2>
       </div>
     </div>

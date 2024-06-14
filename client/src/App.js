@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         element:<Series/>
       },
       {
-        path:"/series/:id",
+        path:"/series/:id", //should this be id or name or sumn
         element:<Novel/>
       },
       {

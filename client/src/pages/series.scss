@@ -1,0 +1,79 @@
+@import "../_variables";
+
+
+.series-page {
+
+  .section {
+    margin-bottom: $margin-three;
+  }
+
+  .filter {
+    width: 100%;
+    background-color: $accent-four;
+    color: $accent-five;
+    height: 300px;
+    border-radius: 20px;
+    margin-top: $margin-three;
+  }
+
+  .novel-card-verbose-container {
+    display: flex;
+    flex-direction: column;
+    gap: $margin-two;
+
+    .novel-card-verbose {
+      display: flex;
+      gap: 15px;
+      border-bottom: 0.1px solid #ddd;
+      padding-bottom: 15px;
+
+      .novel-cover {
+        flex: 1.2;
+
+        .novel-card-image {
+
+        }
+      }
+
+      .novel-content {
+        display: flex;
+        flex-direction: column;
+        flex: 7;
+        gap: 5px;
+
+        .novel-title {
+          font-size: $font-size-two;
+  
+          h3 {
+            margin: 0;
+            font-size: inherit;
+          }
+        }
+
+        .details {
+          display: flex;
+          gap: 15px;
+
+        }
+
+        .genres {
+          display: flex;
+          gap: 10px;
+
+          .genre {
+            background-color: $accent-two;
+            color: $accent-five;
+            padding: 3px 6px;
+            cursor: pointer;
+            border-radius: 2px;
+
+          } 
+        }
+
+        .desc {
+          margin: 10px 0 0 0;
+        }
+      }
+    }
+  }
+}
