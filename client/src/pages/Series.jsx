@@ -2,9 +2,25 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import "./series.scss"
 import { hyphenateAndLowercase } from '../helpers';
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 
 
 function Series() {
+  const [test, setTest] = useState([])
+
+  useEffect(() => {
+    const testConnection = async ()=> {
+      try {
+        const res = await axios.get("http://localhost:5000/series");
+        console.log(res);
+      } catch(err) {
+        console.log(err);
+      }
+    }
+    testConnection()
+  }, [])
+
   const novels = [
     {
       id: 1,
@@ -13,7 +29,7 @@ function Series() {
       chapters: 1200,
       score: 4.9,
       topContributor: "dao ancestor",
-      genres: ["Isekai", "Game System"], //genre vs tags? start with genre then move to tags
+      genres: ["Action", "Comedy"], //genre vs tags? start with genre then move to tags
       desc: "What do you do when you wake up and find yourself inside the very game that you love?\n\nWhat do you do when you realize that you have not only become an NPC – you have even been thrown back in time to before the game even launched!\n\nWhat will happen when our protagonist’s two realities coincide?\n\nHan Xiao was a professional power leveler before his transmigration. Using his past life’s knowledge, Han Xiao sweeps through the universe as he prepares for the arrival of the players. This is definitely not your typical transmigration novel."
     },
     {
@@ -72,7 +88,7 @@ function Series() {
               </div>
               <div className="genres">
                 {novel.genres.map((genre, index) => (
-                  <span className="genre" key={index}>{genre}</span>
+                  <span className="genre" key={index}>{genre}</span> //Link to query (series page with filter set to tag)
                 ))}
               </div>
               <p className="desc">{novel.desc} </p> {/*more/ less/ ellipses implemented*/}

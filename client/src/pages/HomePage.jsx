@@ -117,7 +117,7 @@ function HomePage () {
             <tbody>
               {latestImprovements.map(latestImprovement => (
                 <tr key={latestImprovement.id}>
-                  <Link className= "link" to={`/series/${hyphenateAndLowercase(latestImprovement.title)}`}><td className="name">{latestImprovement.title}</td></Link>
+                  <td className="name"><Link className= "link" to={`/series/${hyphenateAndLowercase(latestImprovement.title)}`}>{latestImprovement.title}</Link></td>
                   <td className="chapter">Chapter {latestImprovement.chapter}</td> {/* create page for chapter and insert into router. how will the url of chapters be displayed*/}
                   <td className="user">{latestImprovement.contributor}</td>
                   <td className="date">{latestImprovement.date}</td>
