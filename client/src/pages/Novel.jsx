@@ -27,7 +27,7 @@ function Novel() {
         url:"https://www.lightnovelworld.co/novel/the-legendary-mechanic-novel-05122221"
       }
     ]
-  }
+  } 
 
   return (
     <div className="novel-page page-wrapper">

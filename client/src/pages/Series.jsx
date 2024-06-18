@@ -12,7 +12,7 @@ function Series() {
   useEffect(() => {
     const testConnection = async ()=> {
       try {
-        const res = await axios.get("http://localhost:5000/series");
+        const res = await axios.get("http://localhost:5000/api/series");
         console.log(res);
       } catch(err) {
         console.log(err);

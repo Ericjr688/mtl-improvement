@@ -19,21 +19,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Use routes
-app.use('/', routes)
+app.use('/api', routes)
 
-app.get("/", (req, res) => {
-  res.json("hello from back")
-})
-
-
-// app.get("/series", (req, res) => {
-//   pool.query("SELECT * FROM novels", (err, data) => {
-//     if(err) return res.json(err)
-
-//     console.log(data.rows)
-//     return res.json(data.rows)
-//   })
-// })
 
 app.listen(port, () => (
   console.log("Server has started")
