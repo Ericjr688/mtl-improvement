@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors'
 import routes from './routes/index.js'
-import pool from './db.js'
+import cookieParser from 'cookie-parser';
 
 
 const app = express();
@@ -9,10 +9,10 @@ const port = 5000;
 
 // Middleware
 app.use(express.json());
-
+app.use(cookieParser());
 
 const corsOptions = {
-  origin: 'http://localhost:3000', // Allow requests only from this origin
+  origin: 'http://localhost:3000', 
   methods: 'GET,PUT,POST,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
 };

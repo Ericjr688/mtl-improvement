@@ -26,7 +26,10 @@
         display: flex;
         gap: 12px;
         
-
+        span {
+          cursor: pointer;
+        }
+        
         .link {
           
           h6 {
