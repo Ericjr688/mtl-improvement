@@ -1,27 +1,36 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from "react-router-dom"
+
 import "./novel.scss"
 import axios from 'axios'
-//import { hyphenateAndLowercase } from '../helpers';
+import { useParams } from 'react-router-dom';
 
 
 
 function Novel() {
-  const location = useLocation();
-  const  id = location.state.id;
-  
   const [novel, setNovel] = useState({});
+  const [loading, setLoading] = useState(true);
+  const { id } = useParams();
+  
 
   useEffect(() => {
+    
+    
     const getNovel = async() => {
       try {
         const res = await axios.get(`/series/${id}`)
         setNovel(res.data)
       } catch (err) {
         console.error(err);
+      } finally {
+        setLoading(false); 
       }
     }
-    getNovel();
+
+    if (id) {
+      getNovel();
+    } else {
+      setLoading(false); 
+    }
   }, [])
 
   // const novel = {
@@ -46,6 +55,14 @@ function Novel() {
   //     }
   //   ]
   // } 
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!loading && !novel.title) {
+    return <div>Error: Novel not found</div>;
+  }
 
   return (
     <div className="novel-page page-wrapper">
@@ -82,11 +99,13 @@ function Novel() {
       </div>
       <div className="novel-sources section">
         <h3 className="section-header">Sources</h3>
-        {/* {novel.sources.map(source => (
-          <a className="link" href={source.url} target="_blank" rel="noopener noreferrer">
-            <div className="source"> Read at {source.name}</div>
-          </a>
-        ))} */}
+        {novel.sources.map((source, index) => (
+          source.url && (
+            <a key={index} className="link" href={source.url} target="_blank" rel="noopener noreferrer">
+              <div className="source"> Read at {source.name}</div>
+            </a>
+          )
+        ))}
       </div> 
       <div className="chapters section">
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { hyphenateAndLowercase } from '../../helpers'
 import axios from 'axios'
+import NovelLink from '../common/NovelLink'
 
 function PopularNovels() {
   // const [popularNovels, setPopularNovels] = useState([])
@@ -70,7 +69,7 @@ function PopularNovels() {
       <div className="novel-card-large-container">
         {popularNovels.map(popularNovel => (
           <div className="novel-card-large" key={popularNovel.id}>
-            <Link className= "link" to={`/series/${hyphenateAndLowercase(popularNovel.title)}`}>
+            <NovelLink novelId={popularNovel.id}>
               <div className="novel-cover">
                 <img className= "novel-card-img" src={popularNovel.img} alt={popularNovel.title} />
                 <span className="badge">{popularNovel.score}</span>
@@ -78,7 +77,7 @@ function PopularNovels() {
               <div className="novel-title">
                 <h3>{popularNovel.title}</h3>
               </div>
-            </Link>
+            </NovelLink>   
             <div className="chapters-count">{popularNovel.chapters}</div>
           </div>
         ))}

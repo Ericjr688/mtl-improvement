@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from "react-router-dom"
 import "./series.scss"
-import { hyphenateAndLowercase } from '../helpers';
 import { useState, useEffect } from 'react';
+import NovelLink from '../components/common/NovelLink';
 import axios from 'axios'
 
 
 function Series() {
   const [novels, setNovels] = useState([])
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getNovels = async ()=> {
@@ -15,7 +15,9 @@ function Series() {
         const res = await axios.get("/series");
         setNovels(res.data);
       } catch(err) {
-        console.error(err);
+        console.error("Error fetching novels:", err);
+      } finally {
+        setLoading(false); 
       }
     }
     getNovels()
@@ -64,6 +66,10 @@ function Series() {
   //   }
   // ]
 
+  if (loading) {
+    return <div>Loading...</div>; // Display a loading indicator while fetching data
+  }
+
   return (
     <div className="series-page page-wrapper">
       <div className="filter section">Filter section</div>
@@ -71,15 +77,15 @@ function Series() {
         {novels.map(novel => (
           <div className="novel-card-verbose" key={novel.novel_id}>
             <div className="novel-cover">
-              <Link className="link" to={`/series/${hyphenateAndLowercase(novel.title)}`} state={{id:novel.novel_id}}>
+              <NovelLink novelId={novel.novel_id}>
                 <img className= "novel-card-img" src={novel.cover_image} alt={novel.title} />
-              </Link>
+              </NovelLink>                
             </div>
             <div className="novel-content">
               <div className="novel-title">
-                <Link className="link" to={`/series/${hyphenateAndLowercase(novel.title)}`} state={{id:novel.novel_id}}>
+                <NovelLink novelId={novel.novel_id}>
                   <h3>{novel.title}</h3>
-                </Link>
+                </NovelLink>   
               </div>
               <div className="details">
                 <div className="score">Score: {novel.score}</div>

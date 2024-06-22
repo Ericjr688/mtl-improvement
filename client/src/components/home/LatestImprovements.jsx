@@ -1,31 +1,54 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { hyphenateAndLowercase } from '../../helpers'
+import React, { useEffect, useState } from 'react'
+import { hyphenateAndLowercase, timeAgo } from '../../helpers'
+import axios from 'axios';
+import NovelLink from '../common/NovelLink';
 
 function LatestImprovements() {
-  const latestImprovements = [
-    {
-      id: 1,
-      title: "The Legendary Mechanic",
-      chapter: 819,
-      contributor: "dao ancestor",
-      date: "2024/06/11", 
-    },
-    {
-      id: 2,
-      title: "Noble Emblem",
-      chapter: 598,
-      contributor: "dao ancestor",
-      date: "2024/06/10", 
-    },
-    {
-      id: 3,
-      title: "Sylver Seeker",
-      chapter: 267,
-      contributor: "minced watermelon",
-      date: "2024/06/10", 
+  const [latestImprovements, setLatestImprovements] = useState({})
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getLatestImprovements = async () => {
+      try {
+        const res = await axios.get('/chapters/recent')
+        setLatestImprovements(res.data)
+      } catch (err) {
+        console.error("Error fetching latest improvements:", err);
+      } finally {
+        setLoading(false); 
+      }
     }
-  ]
+
+    getLatestImprovements()
+  }, [])
+
+  if (loading) {
+    return <div>Loading...</div>; // Display a loading indicator while fetching data
+  }
+
+  // const latestImprovemen = [
+  //   {
+  //     id: 1,
+  //     title: "The Legendary Mechanic",
+  //     chapter: 819,
+  //     contributor: "dao ancestor",
+  //     date: "2024/06/11", 
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Noble Emblem",
+  //     chapter: 598,
+  //     contributor: "dao ancestor",
+  //     date: "2024/06/10", 
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Sylver Seeker",
+  //     chapter: 267,
+  //     contributor: "minced watermelon",
+  //     date: "2024/06/10", 
+  //   }
+  // ]
 
 
   return (
@@ -45,11 +68,11 @@ function LatestImprovements() {
             </thead>
             <tbody>
               {latestImprovements.map(latestImprovement => (
-                <tr key={latestImprovement.id}>
-                  <td className="name"><Link className= "link" to={`/series/${hyphenateAndLowercase(latestImprovement.title)}`}>{latestImprovement.title}</Link></td>
-                  <td className="chapter">Chapter {latestImprovement.chapter}</td> {/* create page for chapter and insert into router. how will the url of chapters be displayed*/}
-                  <td className="user">{latestImprovement.contributor}</td>
-                  <td className="date">{latestImprovement.date}</td>
+                <tr key={latestImprovement.chapter_id}>
+                  <td className="name"><NovelLink novelId={latestImprovement.novel_id}>{latestImprovement.novel_title}</NovelLink></td>
+                  <td className="chapter">Chapter {latestImprovement.chapter_number}</td>
+                  <td className="user">{latestImprovement.username}</td>
+                  <td className="date">{timeAgo(latestImprovement.created_at)}</td>
                 </tr>
               ))}
             </tbody>
