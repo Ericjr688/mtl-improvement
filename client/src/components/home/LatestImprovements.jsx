@@ -1,30 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { hyphenateAndLowercase, timeAgo } from '../../helpers'
-import axios from 'axios';
+import React from 'react'
+import {timeAgo } from '../../helpers'
 import NovelLink from '../common/NovelLink';
 
-function LatestImprovements() {
-  const [latestImprovements, setLatestImprovements] = useState({})
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const getLatestImprovements = async () => {
-      try {
-        const res = await axios.get('/chapters/recent')
-        setLatestImprovements(res.data)
-      } catch (err) {
-        console.error("Error fetching latest improvements:", err);
-      } finally {
-        setLoading(false); 
-      }
-    }
-
-    getLatestImprovements()
-  }, [])
-
-  if (loading) {
-    return <div>Loading...</div>; // Display a loading indicator while fetching data
-  }
+function LatestImprovements({latestImprovements}) {
 
   // const latestImprovemen = [
   //   {

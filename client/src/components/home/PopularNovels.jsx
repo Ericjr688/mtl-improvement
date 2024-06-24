@@ -3,20 +3,6 @@ import axios from 'axios'
 import NovelLink from '../common/NovelLink'
 
 function PopularNovels() {
-  // const [popularNovels, setPopularNovels] = useState([])
-
-  // useEffect(() => {
-  //   const getPopularNovels = async () => {
-  //     try {
-  //       const res = await axios.get("/series")
-  //       console.log(res.data)
-  //     } catch (err) {
-  //       console.log(err.message);
-  //     }
-  //   }
-
-  //   getPopularNovels();
-  // }, [])
 
   const popularNovels = [
     {
