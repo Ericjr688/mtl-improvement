@@ -39,6 +39,18 @@ function timeAgo(date) {
   return `${years} year${years === 1 ? '' : 's'} ago`;
 }
 
+function formatDate(isoDate) {
+  const date = new Date(isoDate)
+  const options = {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  };
+   
+  const formattedDate = date.toLocaleString('en-US', options)
+  return formattedDate
+}
 
-
-export { hyphenateAndLowercase, timeAgo };
+export { hyphenateAndLowercase, timeAgo, formatDate };

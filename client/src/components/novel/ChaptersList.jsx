@@ -1,4 +1,6 @@
 import React from 'react'
+import ChapterLink from '../common/ChapterLink'
+// import { formatDate } from '../../helpers'
 
 function ChaptersList({chapters}) {
   console.log(chapters.length)
@@ -6,11 +8,17 @@ function ChaptersList({chapters}) {
     return <div>No chapters found</div>
   }
   return (
-    <div>
+    <ul className='chapters-list'>
       {chapters.length !==0 && chapters.map(chapter => (
-        <div key={chapter.chapter_id}> {chapter.chapter_id}</div> 
+        <li key={chapter.chapter_id}>
+          <ChapterLink chapterId={chapter.chapter_id}>
+            <span> Chapter {chapter.chapter_number} - </span>
+            <span className='ellipsis'>{chapter.title}</span>
+          </ChapterLink>
+          {/* <span>{formatDate(chapter.created_at)}</span> */}  
+        </li>  
       ))}
-    </div>
+    </ul>
   )
 }
 

@@ -26,6 +26,13 @@ body {
 
   }
 
+  // need this through out doc
+  .ellipsis {
+    white-space: nowrap;       
+    overflow: hidden;            
+    text-overflow: ellipsis;               
+  }
+
   @media (max-width: 1260px) {
     $page-width: 970px;
     

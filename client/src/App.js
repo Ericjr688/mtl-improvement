@@ -13,6 +13,7 @@ import Footer from "./components/common/Footer";
 import Series from "./pages/Series"
 import ImproveTranslation from "./pages/ImproveTranslation"
 import Novel from "./pages/Novel"
+import Chapter from "./pages/Chapter";
 
 
  const Layout = () => {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path:"/series/:id", 
         element:<Novel/>
+      },
+      {
+        path:"/chapters/:id", 
+        element:<Chapter/>
       },
       {
         path:"/improve-translation",
