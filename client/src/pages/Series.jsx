@@ -3,6 +3,7 @@ import "./series.scss"
 import { useState, useEffect } from 'react';
 import NovelLink from '../components/common/NovelLink';
 import axios from 'axios'
+import { keyPairFromArrays } from '../helpers';
 
 
 function Series() {
@@ -92,11 +93,11 @@ function Series() {
                 {/* <div className="top-contributor">Top Contributor: {novel.topContributor}</div> */}
                 {/* <div className="chapter-count">Chapters: {novel.chapters}</div> */}
               </div>
-              {/* <div className="genres">
-                {novel.genres.map((genre, index) => (
-                  <span className="genre" key={index}>{genre}</span> //Link to query (series page with filter set to tag)
+              <div className="genres">
+                {novel.genres.map(genre => (
+                  <span className="genre" key={genre.genre_id}>{genre.genre_name}</span> //Link to query (series page with filter set to tag)
                 ))}
-              </div> */}
+              </div>
               <p className="desc">{novel.description} </p> {/*more/ less/ ellipses implemented*/}
             </div>
           </div>

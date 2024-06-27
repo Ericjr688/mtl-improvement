@@ -53,4 +53,17 @@ function formatDate(isoDate) {
   return formattedDate
 }
 
-export { hyphenateAndLowercase, timeAgo, formatDate };
+function keyPairFromArrays(arr1, arr2) {
+  let i = 0;
+  const obj = {};
+
+  while (i < arr1.length ) {
+    obj[arr1[i]] = arr2[i];
+    i++;
+  };
+
+  console.log(obj);
+  return obj;
+}
+
+export { hyphenateAndLowercase, timeAgo, formatDate, keyPairFromArrays};

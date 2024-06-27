@@ -10,8 +10,7 @@ function RecentChapters({chapters}) {
       {chapters.length !==0 && chapters.map(chapter => (
         <li key={chapter.chapter_id}>
           <div className='left'>
-            <span>Chapter {chapter.chapter_number} - </span>
-            <span>{chapter.title}</span>            
+            <span>Chapter {chapter.chapter_number} - {chapter.title}</span>
           </div>
           <div className='right'>
             <span>{chapter.username}</span>

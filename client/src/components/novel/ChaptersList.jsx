@@ -10,10 +10,10 @@ function ChaptersList({chapters}) {
   return (
     <ul className='chapters-list'>
       {chapters.length !==0 && chapters.map(chapter => (
-        <li key={chapter.chapter_id}>
+        <li key={chapter.chapter_id} >
           <ChapterLink chapterId={chapter.chapter_id}>
-            <span> Chapter {chapter.chapter_number} - </span>
-            <span className='ellipsis'>{chapter.title}</span>
+            {/* <span>  </span> */}
+            <span className='ellipsis'> Chapter {chapter.chapter_number} - {chapter.title}</span>
           </ChapterLink>
           {/* <span>{formatDate(chapter.created_at)}</span> */}  
         </li>  

@@ -17,11 +17,11 @@ function NovelInfo({novel}) {
             {/* <div className="top-contributor">Top Contributor: {novel.topContributor}</div> */}
             {/* <div className="chapter-count">Chapters: {novel.chapters}</div> */}
           </div>
-          {/* <div className="genres">
-            {novel.genres.map((genre, index) => (
-              <span className="genre" key={index}>{genre}</span>
+          <div className="genres">
+            {novel.genres.map(genre => (
+              <span className="genre" key={genre.genre_id}>{genre.genre_name}</span>
             ))}
-          </div> */}
+          </div>
         </div>
       </div>
       {/* <div className="tags section">
