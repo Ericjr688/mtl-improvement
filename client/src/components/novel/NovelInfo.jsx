@@ -24,12 +24,12 @@ function NovelInfo({novel}) {
           </div>
         </div>
       </div>
-      {/* <div className="tags section">
+      <div className="tags section">
         <h3 className="section-header">Tags</h3>
-        {novel.tags.map((tag, index) => (
-          <span className="tag" key={index}>{tag}</span>
+        {novel.tags.map(tag => (
+          <span className="tag" key={tag.tag_id}>{tag.tag_name}</span>
         ))}
-      </div> */}
+      </div>
       <div className="description section">
         <h3 className="section-header">Summary</h3>
         <p className="desc">{novel.description} </p>
