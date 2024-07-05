@@ -7,7 +7,7 @@ function NavBar() {
   const {currentUser, logout} = useContext(AuthContext)
 
   return ( 
-    <div className="navbar">
+    <nav className="navbar">
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
@@ -18,14 +18,14 @@ function NavBar() {
           <Link className="link" to="/series">
             <h6>All Novels</h6>
           </Link>
-          <Link className="link" to="/improve-translation">
+          {/* <Link className="link" to="/improve-translation">
             <h6>Improve Translation</h6>
-          </Link>
-          {currentUser && <span>{currentUser.username}</span>}
+          </Link> */}
+          {currentUser && <Link className="link" to="/account"><span>{currentUser.username}</span></Link>}
           {currentUser ? <span className="logout" onClick={logout}>Logout</span> : <Link className="link" to="/login"> <h6>Login</h6></Link>}
         </div>
       </div>
-    </div>
+    </nav>
   );
 }
 

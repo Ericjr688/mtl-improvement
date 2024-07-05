@@ -1,6 +1,7 @@
 import React from 'react'
 import {timeAgo } from '../../helpers'
 import NovelLink from '../common/NovelLink';
+import ChapterLink from '../common/ChapterLink';
 
 function LatestImprovements({latestImprovements}) {
 
@@ -48,9 +49,9 @@ function LatestImprovements({latestImprovements}) {
               {latestImprovements.map(latestImprovement => (
                 <tr key={latestImprovement.chapter_id}>
                   <td className="name"><NovelLink novelId={latestImprovement.novel_id}>{latestImprovement.novel_title}</NovelLink></td>
-                  <td className="chapter">Chapter {latestImprovement.chapter_number}</td>
+                  <td className="chapter"><ChapterLink chapterId={latestImprovement.chapter_id}>Chapter {latestImprovement.chapter_number}</ChapterLink></td>
                   <td className="user">{latestImprovement.username}</td>
-                  <td className="date">{timeAgo(latestImprovement.created_at)}</td>
+                  <td className="date">{timeAgo(latestImprovement.created_at)}</td> 
                 </tr>
               ))}
             </tbody>

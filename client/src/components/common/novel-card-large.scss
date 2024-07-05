@@ -1,0 +1,85 @@
+@import "../../_variables";
+
+
+.novel-card-large-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 16px;
+  font-size: $font-size-three;
+}
+
+.novel-cover {
+  overflow: hidden;
+  position: relative;
+  margin-bottom: .425rem;
+  max-height: 230px;
+  box-shadow: 0 0 1px rgba(0, 0, 0, .4);
+  // use google for better css
+
+  .novel-card-img {
+    width: 100%;
+    border-radius: 5px;
+    
+    object-fit: cover;
+  }
+}
+
+
+.novel-card-large {
+  flex: 1 1 calc(16.66% - 16px);
+  max-width: 185px;
+  margin-bottom: $margin-one;
+
+    .badge {
+      position: absolute;
+      background-color: $accent-two;
+      color: $accent-five;
+      padding: 3px;
+      border-radius: 0 6px 0 0;
+      bottom: 1px; // for some reason, there is a space in the image wrapper that isn't covered by the image. that is why I have to push the badge up a bit
+      left: 0;   
+      z-index: 1;
+    }
+
+  .novel-title {
+    margin-bottom: .425rem;
+
+    h3 {
+      margin: 0;
+      font-size: inherit;
+      font-weight: 500;
+    }
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .novel-card-large {
+    flex: 1 1 calc(20% - 16px); // 5 items per row
+  }
+}
+
+@media (max-width: 992px) {
+  .novel-card-large {
+    flex: 1 1 calc(25% - 16px); // 4 items per row
+  }
+}
+
+@media (max-width: 768px) {
+  .novel-card-large {
+    flex: 1 1 calc(33.33% - 16px); // 3 items per row
+  }
+}
+
+@media (max-width: 576px) {
+  .novel-card-large {
+    flex: 1 1 calc(50% - 16px); // 2 items per row
+  }
+}
+
+@media (max-width: 400px) {
+  .novel-card-large {
+    flex: 1 1 100%; // 1 item per row
+  }
+}

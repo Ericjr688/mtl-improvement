@@ -222,9 +222,6 @@ export const addNovel = async (req, res) => {
       await pool.query(insertNovelTagsQuery);
     }
 
-    
-
-
     await pool.query('COMMIT');
     
     return res.status(201).json({ novel_id: novelId, message: 'Novel and genres added successfully' });

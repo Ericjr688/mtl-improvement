@@ -19,15 +19,16 @@ function NovelInfo({novel}) {
           </div>
           <div className="genres">
             {novel.genres.map(genre => (
-              <span className="genre" key={genre.genre_id}>{genre.genre_name}</span>
+              <span className="genre" key={genre.genre_id}>{genre.genre_name} </span>
             ))}
           </div>
+          <div className="library-add-btn">Add To Library</div>
         </div>
       </div>
       <div className="tags section">
         <h3 className="section-header">Tags</h3>
         {novel.tags.map(tag => (
-          <span className="tag" key={tag.tag_id}>{tag.tag_name}</span>
+          <span className="tag" key={tag.tag_id}>{tag.tag_name}, </span>
         ))}
       </div>
       <div className="description section">

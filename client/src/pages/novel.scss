@@ -7,6 +7,21 @@ $tab-wrap-border-radius: 6px;
     margin-bottom: $margin-one;
   }
 
+  .novel-info {
+
+
+    .library-add-btn {
+      background-color: $accent-two;
+      color: $accent-five;
+      width: 15%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0;
+      cursor: pointer;
+    }
+  }
+
   .chapters {
 
     .tabs {
@@ -37,7 +52,7 @@ $tab-wrap-border-radius: 6px;
       
           .tab-header.active {
             background: #fff;
-            color:#353434
+            color:#353434;
           }
         }
 

@@ -1,0 +1,52 @@
+@import "../../_variables";
+
+.account-page {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    
+
+    .info {
+
+    }
+
+    
+    .tabs {
+      box-shadow: 0 48px 80px -32px rgba(0, 0, 0, 0.3);
+      background: $accent-three;
+      ul {
+        list-style-type: none; 
+        margin: 0; 
+        padding: 0; 
+        display: flex;
+        flex-direction: row;
+
+        .tab {
+          // width: 20%;
+          padding: 15px 30px;
+          background: $accent-three;
+          cursor: pointer;
+          font-weight: bold;
+          font-size: 18px;
+          color: $accent-four;
+          transition: background 0.1s, color 0.1s;
+    
+          &:hover {
+            background: #d8d8d8;
+          }
+    
+          &.active {
+            background: $accent-five;
+            color: $accent-two
+          }
+        }
+      }
+  
+
+    }
+  }
+
+}

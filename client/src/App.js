@@ -11,9 +11,12 @@ import React from 'react'
 import NavBar from "./components/common/Navbar"
 import Footer from "./components/common/Footer";
 import Series from "./pages/Series"
-import ImproveTranslation from "./pages/ImproveTranslation"
+// import ImproveTranslation from "./pages/ImproveTranslation"
 import Novel from "./pages/Novel"
 import Chapter from "./pages/Chapter";
+import AccountInfo from "./pages/account/AccountInfo";
+import AccountHeader from "./components/account/AccountHeader";
+import Library from "./pages/account/Library";
 
 
  const Layout = () => {
@@ -28,6 +31,17 @@ import Chapter from "./pages/Chapter";
   )
 }
 
+const AccountLayout = () => {
+  return (
+    <>
+      <div className="page-wrapper account-page">
+        <AccountHeader/>
+        <Outlet/>  
+      </div>
+      
+    </>
+  )
+}
 
 const router = createBrowserRouter([
   {
@@ -51,8 +65,19 @@ const router = createBrowserRouter([
         element:<Chapter/>
       },
       {
-        path:"/improve-translation",
-        element:<ImproveTranslation/>
+        path:"/account",
+        element:<AccountLayout/>,
+        children: [
+          {
+            path:"/account",
+            element:<AccountInfo/>
+          },
+          {
+            path:"/account/library",
+            element:<Library/>
+          },
+
+        ]
       },
     ]
   },

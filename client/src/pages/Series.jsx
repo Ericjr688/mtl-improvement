@@ -3,7 +3,6 @@ import "./series.scss"
 import { useState, useEffect } from 'react';
 import NovelLink from '../components/common/NovelLink';
 import axios from 'axios'
-import { keyPairFromArrays } from '../helpers';
 
 
 function Series() {
