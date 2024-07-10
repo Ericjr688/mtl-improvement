@@ -1,6 +1,35 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../../context/authContext'
 
 function NovelInfo({novel}) {
+  const { currentUser } = useContext(AuthContext)
+  const [inLibrary, setInLibrary] = useState(novel.in_library);
+  const [response, setResponse] = useState(null)
+
+  const handleAddToLibrary = async() => {
+    try {
+      await axios.post('/library', {
+        userId: currentUser.user_id,
+        novelId: novel.novel_id
+      })
+      setInLibrary(true);
+      setResponse("Success!")
+    } catch (err) {
+      setResponse(err.response.data)
+    }
+  }
+  
+  const handleRemoveFromLibrary = async() => {
+    try {
+      await axios.delete(`/library/${currentUser.user_id}/${novel.novel_id}`)
+      setInLibrary(false);
+      setResponse("Removed!")
+    } catch (err) {
+      setResponse(err.response.data)
+    }
+  }
+
   return (
     <>
       <div className="novel-info section">
@@ -22,7 +51,12 @@ function NovelInfo({novel}) {
               <span className="genre" key={genre.genre_id}>{genre.genre_name} </span>
             ))}
           </div>
-          <div className="library-add-btn">Add To Library</div>
+          {inLibrary ? (
+            <div className="library-btn" onClick={handleRemoveFromLibrary}>In Library</div>
+          ) : (
+            <div className="library-btn" onClick={handleAddToLibrary}>Add To Library</div>
+          )}
+          {/* {response && <div>{response}</div>} */}
         </div>
       </div>
       <div className="tags section">

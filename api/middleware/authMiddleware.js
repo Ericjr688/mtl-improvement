@@ -24,4 +24,16 @@ const verifyAdmin = (req, res, next) => {
     });
 };
 
-export { verifyToken, verifyAdmin };
+const verifyUserAccess = (req, res, next) => {
+    verifyToken(req, res, () => {
+        const userIdFromToken = req.userInfo.id;
+        const userIdFromParams = req.params.userId;
+
+        
+        if (String(userIdFromToken) !== String(userIdFromParams)) {
+            return res.status(403).json("You are not allowed to perform this action");
+        }
+        next();
+    });
+};
+export { verifyToken, verifyAdmin, verifyUserAccess };

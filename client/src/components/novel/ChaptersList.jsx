@@ -3,7 +3,7 @@ import ChapterLink from '../common/ChapterLink'
 // import { formatDate } from '../../helpers'
 
 function ChaptersList({chapters}) {
-  console.log(chapters.length)
+  // console.log(chapters.length)
   if(!chapters.length) {
     return <div>No chapters found</div>
   }

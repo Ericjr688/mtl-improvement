@@ -37,6 +37,8 @@ export const getNovels = async (req, res) => {
 export const getNovel = async (req, res) => {
   try {
     const novelId = req.params.id;
+    const userId = req.query.userId;
+
     const q = `
       SELECT 
         n.*,
@@ -51,7 +53,12 @@ export const getNovel = async (req, res) => {
             DISTINCT jsonb_build_object('tag_id', t.tag_id, 'tag_name', t.tag_name)
           ) FILTER (WHERE t.tag_id IS NOT NULL), 
           '[]'
-        ) AS tags
+        ) AS tags,
+        EXISTS (
+          SELECT 1
+          FROM library l
+          WHERE l.novel_id = n.novel_id AND l.user_id = $2
+        ) AS in_library
       FROM 
         novels n
       LEFT JOIN 
@@ -67,7 +74,7 @@ export const getNovel = async (req, res) => {
       GROUP BY 
         n.novel_id;
     `;
-    const result = await pool.query(q, [novelId]);
+    const result = await pool.query(q, [novelId, userId]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Novel not found' });

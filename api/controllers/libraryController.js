@@ -59,3 +59,16 @@ export const addNovelToUserLibrary = async (req, res) => {
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+export const deleteNovelFromUserLibrary = async (req, res) => {
+  try {
+    const {userId, novelId} = req.params
+    const q = "DELETE FROM library WHERE user_id = $1 AND novel_id = $2"
+
+    await pool.query(q, [userId, novelId]);
+    res.status(200).json("Novel removed from library");
+  } catch (err) {
+    console.error('Error deleting novel from user library', err.message);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+}

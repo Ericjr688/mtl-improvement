@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import "./novel.scss"
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import NovelInfo from '../components/novel/NovelInfo';
 import Chapters from '../components/novel/Chapters';
+import { AuthContext } from '../context/authContext';
 
 
 
@@ -13,6 +14,8 @@ function Novel() {
   //const [chapters, setChapters] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const { currentUser } = useContext(AuthContext);
+  const userId = currentUser.user_id;
   
 
   useEffect(() => {
@@ -20,7 +23,9 @@ function Novel() {
     
     const getNovelData = async() => {
       try {
-        const novelRes = await axios.get(`/series/${id}`)
+        const novelRes = await axios.get(`/series/${id}`,{
+          params: { userId }
+        })
         //const chaptersRes = await axios.get(`/series/${id}/chapters`)
 
         setNovel(novelRes.data)

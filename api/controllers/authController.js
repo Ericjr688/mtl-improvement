@@ -49,7 +49,7 @@ export const login = async (req, res) => {
       return res.status(400).json("Wrong username or password!");
     }
 
-    const token = jwt.sign({id: data.user_id}, "jwtkey");
+    const token = jwt.sign({id: data.user_id, isAdmin: data.isAdmin}, "jwtkey");
     const {password_hash, ...others} = data;
 
 
