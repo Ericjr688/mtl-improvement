@@ -1,0 +1,35 @@
+.ratings-container {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.star-wrap {
+  display: flex;
+  align-items: center;
+
+  .star {
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &.full {
+      background-image: url('../../images/stars/star-full.svg');
+    }
+
+    &.half {
+      background-image: url('../../images/stars/star-half.svg');
+    }
+
+    &.empty {
+      background-image: url('../../images/stars/star-empty.svg');
+    }
+  }
+}
+
+
+.score {
+  margin-left: 6px; 
+}
+

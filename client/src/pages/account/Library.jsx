@@ -37,7 +37,7 @@ function Library() {
 
   return (
     <div className="novel-card-large-container">
-      {libraryNovels.map(libraryNovel => (
+      {libraryNovels && libraryNovels.map(libraryNovel => (
         <NovelCardLarge novel={libraryNovel} type="library" key={libraryNovel.id} />
       ))}
     </div>

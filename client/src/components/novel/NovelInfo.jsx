@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../context/authContext'
+import RatingsDisplay from '../common/RatingsDisplay';
+import { Link } from 'react-router-dom';
 
 function NovelInfo({novel}) {
   const { currentUser } = useContext(AuthContext)
@@ -30,6 +32,7 @@ function NovelInfo({novel}) {
     }
   }
 
+  // console.log(novel)
   return (
     <>
       <div className="novel-info section">
@@ -41,8 +44,8 @@ function NovelInfo({novel}) {
             <h3>{novel.title}</h3>
           </div>
           <div className="details">
-            <div className="author">Author {novel.author}</div>
-            <div className="score">Score: {novel.score}</div>
+            <div className="author">Author: {novel.author}</div>
+            <RatingsDisplay score={(novel.total_score / novel.review_count).toFixed(1)}></RatingsDisplay>
             {/* <div className="top-contributor">Top Contributor: {novel.topContributor}</div> */}
             {/* <div className="chapter-count">Chapters: {novel.chapters}</div> */}
           </div>
@@ -59,6 +62,12 @@ function NovelInfo({novel}) {
           {/* {response && <div>{response}</div>} */}
         </div>
       </div>
+      <Link to={`/series/${novel.novel_id}/reviews`} className="link large-btn">
+        <div className="body">
+          <h4>User Reviews</h4>
+          <p>Reviews from {novel.review_count} users</p>
+        </div>
+      </Link>
       <div className="tags section">
         <h3 className="section-header">Tags</h3>
         {novel.tags.map(tag => (

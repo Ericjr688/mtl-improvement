@@ -17,6 +17,7 @@ import Chapter from "./pages/Chapter";
 import AccountInfo from "./pages/account/AccountInfo";
 import AccountHeader from "./components/account/AccountHeader";
 import Library from "./pages/account/Library";
+import NovelReviews from "./pages/NovelReviews";
 
 
  const Layout = () => {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path:"/series/:id", 
         element:<Novel/>
+      },
+      {
+        path:"/series/:novelId/reviews", 
+        element:<NovelReviews/>
       },
       {
         path:"/chapters/:id", 

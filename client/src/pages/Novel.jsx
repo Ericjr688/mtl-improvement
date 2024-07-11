@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import NovelInfo from '../components/novel/NovelInfo';
 import Chapters from '../components/novel/Chapters';
 import { AuthContext } from '../context/authContext';
+import Loading from '../components/common/Loading';
 
 
 
@@ -18,9 +19,8 @@ function Novel() {
   const userId = currentUser.user_id;
   
 
+  
   useEffect(() => {
-    
-    
     const getNovelData = async() => {
       try {
         const novelRes = await axios.get(`/series/${id}`,{
@@ -29,6 +29,8 @@ function Novel() {
         //const chaptersRes = await axios.get(`/series/${id}/chapters`)
 
         setNovel(novelRes.data)
+        
+        
         //setChapters(chaptersRes.data)
       } catch (err) {
         console.error("Error fetching novel data:", err);
@@ -43,6 +45,8 @@ function Novel() {
       setLoading(false); 
     }
   }, [id])
+
+  // console.log(novel)
 
   // const novel = {
   //   id: 1,
@@ -68,7 +72,7 @@ function Novel() {
   // } 
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading/>
   }
 
   if (!loading && !novel.title) {

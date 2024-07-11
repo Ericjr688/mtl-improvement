@@ -8,7 +8,7 @@ const NovelCardLarge = ({ novel, type }) => {
       <NovelLink novelId={novel.novel_id}>
         <div className="novel-cover">
           <img className="novel-card-img" src={novel.cover_image} alt={novel.title} />
-          <span className="badge">{novel.score}</span>
+          <span className="badge">{(novel.total_score / novel.review_count).toFixed(1)}</span>
         </div>
         <div className="novel-title">
           <h3>{novel.title}</h3>

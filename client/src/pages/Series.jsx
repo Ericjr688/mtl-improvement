@@ -3,6 +3,7 @@ import "./series.scss"
 import { useState, useEffect } from 'react';
 import NovelLink from '../components/common/NovelLink';
 import axios from 'axios'
+import RatingsDisplay from '../components/common/RatingsDisplay';
 
 
 function Series() {
@@ -88,7 +89,7 @@ function Series() {
                 </NovelLink>   
               </div>
               <div className="details">
-                <div className="score">Score: {novel.score}</div>
+                <RatingsDisplay score={(novel.total_score / novel.review_count).toFixed(1)}></RatingsDisplay>
                 {/* <div className="top-contributor">Top Contributor: {novel.topContributor}</div> */}
                 {/* <div className="chapter-count">Chapters: {novel.chapters}</div> */}
               </div>

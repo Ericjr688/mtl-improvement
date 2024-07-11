@@ -2,6 +2,37 @@
 
 $tab-wrap-border-radius: 6px;
 
+.link.large-btn {
+  display: block;
+  text-decoration: none;
+  padding: 15px 20px;
+  border: 2px solid $accent-one; 
+  border-radius: 5px; 
+  color: $accent-one; 
+  transition: all 0.3s ease; 
+}
+
+.link.large-btn .body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.link.large-btn .body h4 {
+  margin: 0;
+  font-size: 1.5em; 
+}
+
+.link.large-btn .body p {
+  margin: 5px 0 0 0;
+  font-size: 1em; 
+}
+
+.link.large-btn:hover {
+  border-color: $accent-four;
+  color: $accent-four; 
+}
+
 .novel-page {
   .section {
     margin-bottom: $margin-one;

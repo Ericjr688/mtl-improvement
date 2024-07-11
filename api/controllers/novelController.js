@@ -2,6 +2,7 @@ import pool from "../db.js";
 import jwt from "jsonwebtoken";
 
 export const getNovels = async (req, res) => {
+  // add functionality to calculate scores here and for getting individual novel
   try {
     const q = `
       SELECT 
@@ -161,8 +162,8 @@ export const addNovel = async (req, res) => {
     await pool.query('BEGIN');
 
     const insertNovelQuery = `
-      INSERT INTO novels (title, original_title, author, description, cover_image, score, sources)
-      VALUES ($1, $2, $3, $4, $5, $6, $7)
+      INSERT INTO novels (title, original_title, author, description, cover_image, sources)
+      VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING novel_id;
     `;
     const values = [
@@ -171,7 +172,6 @@ export const addNovel = async (req, res) => {
       req.body.author,
       req.body.description,
       req.body.cover_image,
-      req.body.score,
       req.body.sources
     ];
     const insertNovelResult = await pool.query(insertNovelQuery, values);
