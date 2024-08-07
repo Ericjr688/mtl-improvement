@@ -16,7 +16,8 @@ export const getUserLibrary = async (req, res) => {
           n.author,
           n.description,
           n.cover_image,
-          n.score,
+          n.total_score,
+          n.review_count,
           n.sources,
           n.is_improved,
           n.created_at AS novel_created_at

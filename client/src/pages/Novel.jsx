@@ -16,10 +16,10 @@ function Novel() {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const { currentUser } = useContext(AuthContext);
-  const userId = currentUser.user_id;
-  
+  const userId = currentUser ? currentUser.user_id : null;
 
-  
+
+  // should work even when no user is logged in
   useEffect(() => {
     const getNovelData = async() => {
       try {

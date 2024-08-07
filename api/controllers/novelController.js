@@ -55,11 +55,14 @@ export const getNovel = async (req, res) => {
           ) FILTER (WHERE t.tag_id IS NOT NULL), 
           '[]'
         ) AS tags,
-        EXISTS (
-          SELECT 1
-          FROM library l
-          WHERE l.novel_id = n.novel_id AND l.user_id = $2
-        ) AS in_library
+        CASE 
+          WHEN $2::int IS NULL THEN false
+          ELSE EXISTS (
+            SELECT 1
+            FROM library l
+            WHERE l.novel_id = n.novel_id AND l.user_id = $2
+          )
+        END AS in_library
       FROM 
         novels n
       LEFT JOIN 
@@ -75,7 +78,9 @@ export const getNovel = async (req, res) => {
       GROUP BY 
         n.novel_id;
     `;
+
     const result = await pool.query(q, [novelId, userId]);
+
 
     if (result.rows.length === 0) {
       return res.status(404).json({ error: 'Novel not found' });
@@ -242,15 +247,6 @@ export const addNovel = async (req, res) => {
 
 export const deleteNovel = async (req, res) => {
   try {
-    // const token = req.cookies.access_token
-    // if (!token) return res.status(401).json("User not authenticated")
-
-    // jwt.verify(token, "jwtkey", (err, userInfo) => {
-    //   if (err) return res.status(403).json("Token is not valid!")
-    //   if (userInfo.isAdmin == false) return res.status(403).json("You are not allowed to delete because you are not an admin")
-    // })
-
-    // already in middleware.
     
     const novelId = req.params.id
     await pool.query("DELETE FROM novels WHERE novel_id = $1", [novelId])

@@ -5,7 +5,7 @@ import { verifyToken, verifyUserAccess } from '../middleware/authMiddleware.js';
 const router = express.Router()
 
 router.get('/:id', getUserLibrary)
-router.post('/', verifyToken, addNovelToUserLibrary)
+router.post('/', verifyUserAccess, addNovelToUserLibrary)
 router.delete('/:userId/:novelId', verifyUserAccess, deleteNovelFromUserLibrary)
 
 export default router

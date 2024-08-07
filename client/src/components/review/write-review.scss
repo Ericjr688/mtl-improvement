@@ -1,0 +1,179 @@
+@import "../../_variables";
+
+.rating:not(:checked) > input {
+  position: absolute;
+  appearance: none;
+}
+
+.rating:not(:checked) > label {
+  float: right;
+  cursor: pointer;
+  font-size: 30px;
+  fill: #666;
+}
+
+.rating:not(:checked) > label > svg {
+  fill: #666; /* Set default color for SVG */
+  transition: fill 0.15s ease; /* Add a transition effect */
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  fill: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  fill: #ff9e0b;
+}
+
+.rating > input:checked ~ label > svg {
+  fill: #ffa723; /* Set color for selected stars */
+}
+
+
+.review-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .review-section {
+    position: relative;
+    width: 600px;
+    background: $accent-five;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $accent-three;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+
+      .close {
+        cursor: pointer;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: $accent-one;
+      }
+    }
+
+    .review-content {
+      display: flex;
+      flex-direction: column;
+
+      .review-message {
+        background-color: lighten($accent-five, 10%);
+        border: 1px solid $accent-three;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 0.9em;
+        color: $accent-four;
+
+        p {
+          margin: 0 0 10px 0;
+        }
+
+        ul {
+          padding-left: 20px;
+
+          li {
+            list-style-type: disc;
+            margin-bottom: 5px;
+          }
+        }
+      }
+
+      .review-score {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 15px;
+
+        .stars {
+          font-size: 1.5rem;
+          color: #ffd700; /* Gold color for stars */
+        }
+      }
+
+      .review-text {
+        margin-bottom: 15px;
+
+        textarea {
+          width: 100%;
+          height: 150px;
+          border: 1px solid $accent-three;
+          border-radius: 5px;
+          padding: 10px;
+          font-size: 1rem;
+          resize: none;
+          color: $accent-one;
+          background-color: $accent-five;
+        }
+      }
+
+      .review-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+
+        .spoiler {
+          display: flex;
+          align-items: center;
+
+          label {
+            margin-left: 5px;
+            color: $accent-one;
+          }
+
+          input[type="checkbox"] {
+            accent-color: $accent-two;
+          }
+        }
+
+        .post-review {
+          padding: 10px 20px;
+          background: $accent-two;
+          color: $accent-five;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+          &:disabled {
+            background: $accent-three;
+            cursor: not-allowed;
+          }
+
+          &:hover:not(:disabled) {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+  }
+}

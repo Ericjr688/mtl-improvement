@@ -33,6 +33,22 @@ $tab-wrap-border-radius: 6px;
   color: $accent-four; 
 }
 
+.btn {
+  background-color: $accent-two;
+  color: $accent-five;
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
 .novel-page {
   .section {
     margin-bottom: $margin-one;
@@ -41,16 +57,7 @@ $tab-wrap-border-radius: 6px;
   .novel-info {
 
 
-    .library-btn {
-      background-color: $accent-two;
-      color: $accent-five;
-      width: 15%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 12px 0;
-      cursor: pointer;
-    }
+    
   }
 
   .chapters {

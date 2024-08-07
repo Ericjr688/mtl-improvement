@@ -32,7 +32,7 @@ const RatingsDisplay = ({ score }) => {
       <div className="star-wrap">
         {renderStars(fullStars, halfStar)}
       </div>
-      <span className="score">{score}</span>
+      <span className="score">({score})</span>
     </div>
   );
 };

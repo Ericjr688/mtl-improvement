@@ -1,0 +1,8 @@
+.reviewed-msg {
+  background: #ccc;
+  cursor: not-allowed;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

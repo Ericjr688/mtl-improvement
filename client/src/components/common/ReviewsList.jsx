@@ -1,35 +1,19 @@
-import { timeAgo } from '../../helpers';
-import RatingsDisplay from './RatingsDisplay'; 
+import IndividualReview from './IndividualReview';
 import './reviews-list.scss'
 
-const ReviewCard = ({ reviews, reviewType }) => {
+const ReviewsList = ({ reviews, reviewType, handleDelete }) => {
   return (
     <div className="review-list">
-      {reviews && reviews.map((review) => (
-        <div key={review.review_id} className="review-card">
-          {reviewType === 'novel' ? (
-            <div className="user-info">
-              <div className="user-details">
-                <img src="" alt="User Avatar" className="user-avatar" />
-                <span className="username">{review.username}</span>
-              </div>
-              <div className="rating-wrapper">
-                <RatingsDisplay score={review.score} />
-                <span className="review-date">{timeAgo(review.created_at)}</span>
-              </div>
-            </div>
-          ) : (
-            <div className="novel-info">
-              <span className="novel-name">Placeholder Novel Name</span>
-              <RatingsDisplay score={review.score} />
-              <span className="review-date">{timeAgo(review.created_at)}</span>
-            </div>
-          )}
-          <div className="review-text">{review.review_text}</div>
-        </div>
+      {reviews.map((review) => (
+        <IndividualReview
+          key={review.review_id}
+          review={review}
+          reviewType={reviewType}
+          handleDelete={handleDelete}
+        />
       ))}
     </div>
   );
 };
 
-export default ReviewCard;
+export default ReviewsList

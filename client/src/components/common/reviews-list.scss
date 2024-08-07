@@ -1,55 +1,139 @@
 @import "../../_variables";
 
-.review-list {
-  .review-card {
+.review-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $accent-three;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: $accent-five;
+  position: relative;
+
+  .user-info, .novel-info {
     display: flex;
+    margin-bottom: 10px;
     flex-direction: column;
-    border: 1px solid $accent-three;
-    border-radius: 5px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: $accent-five;
 
-    .user-info, .novel-info {
+    .user-details, .novel-info {
       display: flex;
-      margin-bottom: 10px;
-      flex-direction: column;
+      flex-direction: row;
 
-      
-      .user-details, .novel-info {
-        display: flex;
-        flex-direction: row;
-        
-        .user-avatar {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          margin-right: 10px;
-        }
-        .username, .novel-name {
-          font-weight: bold;
-          margin-bottom: 5px;
-        }
-
+      .user-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
       }
-      .rating-wrapper {
-        display: flex;
-        flex-direction: row;
-        gap: .8em;
 
-        .review-date {
-          font-size: 0.9em;
-          color: $accent-four;
-          display: flex;
-          align-items: center;
-        }
+      .username, .novel-name {
+        font-weight: bold;
+        margin-bottom: 5px;
       }
     }
 
-    .review-text {
+    .rating-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: .8em;
+
+      .review-date {
+        font-size: 0.9em;
+        color: $accent-four;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .review-text-wrapper {
+    position: relative;
+  }
+
+  .review-text {
+    font-size: 1em;
+    color: $accent-two;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    white-space: pre-wrap;
+
+    &.collapsed {
+      max-height: 4.5em; /* Adjust based on your line height */
+      text-overflow: ellipsis;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1.5em;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+      }
+    }
+
+    &.expanded {
+      max-height: none;
+    }
+  }
+
+  .spoiler-overlay {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    // backdrop-filter: blur(5px);
+
+    .reveal-spoiler-btn {
+      padding: 10px 20px;
+      background: $accent-one;
+      color: $accent-five;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: inherit;
       font-size: 1em;
-      color: $accent-two;
-      margin-top: 10px;
+
+      &:hover {
+        background: darken($accent-one, 10%);
+      }
+    }
+  }
+
+  .toggle-btn {
+    background: none;
+    border: none;
+    color: $accent-one;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: inherit;
+    font-size: 1em;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .delete-btn {
+    align-self: flex-start;
+    background-color: $accent-one;
+    color: $accent-five;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: inherit;
+
+    &:hover {
+      background-color: darken($accent-one, 10%);
     }
   }
 }

@@ -89,7 +89,7 @@ function Series() {
                 </NovelLink>   
               </div>
               <div className="details">
-                <RatingsDisplay score={(novel.total_score / novel.review_count).toFixed(1)}></RatingsDisplay>
+                <RatingsDisplay score={novel.total_score > 0 ? (novel.total_score / novel.review_count).toFixed(1) : 5.0.toFixed(1)}></RatingsDisplay>
                 {/* <div className="top-contributor">Top Contributor: {novel.topContributor}</div> */}
                 {/* <div className="chapter-count">Chapters: {novel.chapters}</div> */}
               </div>

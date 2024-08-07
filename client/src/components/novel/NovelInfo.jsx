@@ -2,14 +2,24 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../context/authContext'
 import RatingsDisplay from '../common/RatingsDisplay';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NovelInfo({novel}) {
   const { currentUser } = useContext(AuthContext)
   const [inLibrary, setInLibrary] = useState(novel.in_library);
   const [response, setResponse] = useState(null)
+  const navigate = useNavigate();
+
+  const userCheck = () => {
+    if (!currentUser) {
+      navigate("/login")
+      return false
+    }
+    return true
+  }
 
   const handleAddToLibrary = async() => {
+    if (!userCheck()) return;
     try {
       await axios.post('/library', {
         userId: currentUser.user_id,
@@ -23,6 +33,7 @@ function NovelInfo({novel}) {
   }
   
   const handleRemoveFromLibrary = async() => {
+    if (!userCheck()) return;
     try {
       await axios.delete(`/library/${currentUser.user_id}/${novel.novel_id}`)
       setInLibrary(false);
@@ -45,7 +56,7 @@ function NovelInfo({novel}) {
           </div>
           <div className="details">
             <div className="author">Author: {novel.author}</div>
-            <RatingsDisplay score={(novel.total_score / novel.review_count).toFixed(1)}></RatingsDisplay>
+            <RatingsDisplay score={novel.total_score > 0 ? (novel.total_score / novel.review_count).toFixed(1) : 5}></RatingsDisplay>
             {/* <div className="top-contributor">Top Contributor: {novel.topContributor}</div> */}
             {/* <div className="chapter-count">Chapters: {novel.chapters}</div> */}
           </div>
@@ -55,9 +66,9 @@ function NovelInfo({novel}) {
             ))}
           </div>
           {inLibrary ? (
-            <div className="library-btn" onClick={handleRemoveFromLibrary}>In Library</div>
+            <div className="btn library-btn" onClick={handleRemoveFromLibrary}>In Library</div>
           ) : (
-            <div className="library-btn" onClick={handleAddToLibrary}>Add To Library</div>
+            <div className="btn library-btn" onClick={handleAddToLibrary}>Add To Library</div>
           )}
           {/* {response && <div>{response}</div>} */}
         </div>
@@ -65,7 +76,7 @@ function NovelInfo({novel}) {
       <Link to={`/series/${novel.novel_id}/reviews`} className="link large-btn">
         <div className="body">
           <h4>User Reviews</h4>
-          <p>Reviews from {novel.review_count} users</p>
+          <p>Reviews from {novel.review_count > 0 ? novel.review_count : 1} users</p>
         </div>
       </Link>
       <div className="tags section">
